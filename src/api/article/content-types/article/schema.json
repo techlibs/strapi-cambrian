@@ -13,21 +13,29 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "description": {
       "type": "text",
-      "maxLength": 80
+      "maxLength": 280,
+      "required": true
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "cover": {
       "type": "media",
       "multiple": false,
-      "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
     },
     "author": {
       "type": "relation",
@@ -41,9 +49,9 @@
       "target": "api::category.category",
       "inversedBy": "articles"
     },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": ["shared.media", "shared.quote", "shared.rich-text", "shared.slider"]
+    "content": {
+      "type": "blocks",
+      "required": true
     }
   }
 }
